@@ -17,3 +17,11 @@ Just a record of the findings in Cloudflare
   * Go to Cloudflare Zero Trust > Settings > Custom Pages
   * Picture Reference of Team Domain ![image](https://github.com/J-494/Cloudflare/assets/68671153/536a983b-ba07-4351-bee7-87cf549a3303)
 * 5 Used the batch file in this repo named [Teams_Warp_Service_Auth.bat](https://github.com/J-494/Cloudflare/blob/main/Teams_Warp_Service_Auth.bat)
+* If want to remove the account type the command below in cmd
+  ```
+  "C:\Program Files\Cloudflare\Cloudflare WARP\warp-cli.exe" delete
+  ```
+  If want to disconnect
+  ```
+  "C:\Program Files\Cloudflare\Cloudflare WARP\warp-cli.exe" disconnect
+  ```
