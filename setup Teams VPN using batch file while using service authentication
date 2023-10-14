@@ -1,0 +1,19 @@
+@echo off
+setlocal enabledelayedexpansion
+
+curl -H "CF-Access-Client-Id: XXXXXXXXXXXXXXXXXXXXXXXXD.access" -H "CF-Access-Client-Secret: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" -v https://<Your-Teams>.cloudflareaccess.com/warp 2>&1 | findstr Location > temp.txt
+
+for /f "delims=" %%a in (temp.txt) do (
+    set "line=%%a"    
+)
+
+set "output=!line:*< Location: =!"
+
+"C:\Program Files\Cloudflare\Cloudflare WARP\warp-cli.exe" delete
+"C:\Program Files\Cloudflare\Cloudflare WARP\warp-cli.exe" teams-enroll-token !output! 
+ping 127.0.0.1 -n 6 > nul
+"C:\Program Files\Cloudflare\Cloudflare WARP\warp-cli.exe" connect
+
+del temp.txt
+
+endlocal
